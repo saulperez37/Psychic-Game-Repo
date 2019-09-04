@@ -2,11 +2,19 @@
 let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
     "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
+    console.log(letters);
+    
+
 //Variables with values as they will appear before first user guess.
 let wins = 0;
 let losses = 0;
 let guessesLeft = 10;
 let guesses = [];
+
+    console.log(wins);
+    console.log(losses);
+    console.log(guessesLeft);
+    console.log(guesses);
 
 let winsText = document.getElementById("wins");
 let lossesText = document.getElementById("losses");
@@ -20,18 +28,22 @@ document.onkeyup = function (event) {
     let computerGuess = letters[Math.floor(Math.random() * letters.length)];
     
     let userGuess = event.key;
+    
+    console.log(userGuess);
+    
 
 //This will push user guess to the 'guesses' array to be displayed.
     guesses.push(userGuess);
     guessesLeft--;
 
-
+    console.log(guessesLeft);
+    
 //If statement that will determine if user wins or loses.
     if (userGuess === computerGuess) {
         wins++;
         restart();
         alert("You got it! The correct letter was " + computerGuess + "!");
-    } else if (guessesLeft === 0) {
+    } else if (guessesLeft <= 0) {
         losses++;
         restart();
         alert("Sorry, I was thinking of the letter " + computerGuess + "."); 
@@ -42,13 +54,18 @@ document.onkeyup = function (event) {
     lossesText.textContent = "Losses: " + losses;
     guessesLeftText.textContent = "Guesses Left: " + guessesLeft;
     guessesText.textContent = "Your guesses so far: " + guesses;
-}
+
+    console.log(userGuess);
+    console.log(computerGuess);
+    console.log(winsText);
+    console.log(lossesText);
+}   
 
 //This function will reset number of guesses left & user guesses after win or loss.
 let restart = function () {
     guessesLeft = 10;
     guesses = [];
-    let computerGuess = letters[Math.floor(Math.random() * letters.length)];
+    computerGuess = letters[Math.floor(Math.random() * letters.length)];
 }
 
 
